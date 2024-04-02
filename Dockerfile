@@ -1,8 +1,14 @@
-# 使用Alpine Linux作为基础镜像
+# 第一阶段：使用MySQL官方镜像
+FROM mysql:8.0 as mysql
+
+# 第二阶段：使用Alpine Linux
 FROM alpine:latest
 
-# 安装mysql客户端
-RUN apk add --no-cache mysql-client bash
+# 安装bash
+RUN apk add --no-cache bash
+
+# 从MySQL镜像中复制mysqldump到Alpine容器
+COPY --from=mysql /usr/bin/mysqldump /usr/bin/mysqldump
 
 # 创建一个目录来存放备份脚本和备份文件
 WORKDIR /app
