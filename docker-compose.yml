@@ -17,6 +17,7 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: password
       MYSQL_DATABASE: mydatabase
+      MYSQL_PORT: 3306
       FILE_NAME: backup
       # 定义备份计划，例如每天凌晨1点
       BACKUP_SCHEDULE: "0 1 * * *"

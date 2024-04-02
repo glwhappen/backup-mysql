@@ -19,6 +19,7 @@ ENV MYSQL_USER=root
 ENV MYSQL_PASSWORD=password
 ENV MYSQL_DATABASE=mydatabase
 ENV FILE_NAME=backup
+ENV MYSQL_PORT=3306
 ENV BACKUP_SCHEDULE='@daily'
 
 # 使用start.sh脚本启动容器

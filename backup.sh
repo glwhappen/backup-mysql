@@ -10,6 +10,6 @@ echo "Backup started at $current_time"
 BACKUP_FILENAME="${FILE_NAME}.sql"
 echo "${MYSQL_HOST}" -u "${MYSQL_USER}" "${MYSQL_DATABASE}"
 # 使用mysqldump进行备份
-mysqldump -h "${MYSQL_HOST}" -u "${MYSQL_USER}" -p"${MYSQL_PASSWORD}" "${MYSQL_DATABASE}" > "/backup/${BACKUP_FILENAME}"
+mysqldump -h "${MYSQL_HOST}" -P "${MYSQL_PORT}" -u "${MYSQL_USER}" -p"${MYSQL_PASSWORD}" "${MYSQL_DATABASE}" > "/backup/${BACKUP_FILENAME}"
 
 echo "Backup completed: ${BACKUP_FILENAME}"
