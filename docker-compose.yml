@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  mysql: # 测试MySQL
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: mydatabase
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  backup:
+    build: .
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: mydatabase
+      FILE_NAME: backup
+      # 定义备份计划，例如每天凌晨1点
+      BACKUP_SCHEDULE: "0 1 * * *"
+    volumes:
+      - ./backup_data:/backup
+    depends_on:
+      - mysql
+
+volumes:
+  mysql_data:
